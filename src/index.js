@@ -6,6 +6,7 @@ const {
   ActivityType,
 } = require("discord.js");
 const eventHandler = require("./handlers/eventHandler");
+const mongoose = require("mongoose");
 
 const client = new Client({
   intents: [
@@ -16,6 +17,16 @@ const client = new Client({
   ],
 });
 
-eventHandler(client);
+(async () => {
+  try {
+    mongoose.set("strictQuery", false);
+    await mongoose.connect(process.env.MONGODB_URI, {});
+    console.log(`🟢 Connect to MongoBD`);
 
-client.login(process.env.TOKEN);
+    eventHandler(client);
+
+    client.login(process.env.TOKEN);
+  } catch (error) {
+    console.error(`Something was wrong ${error}`);
+  }
+})();

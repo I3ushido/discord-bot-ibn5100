@@ -2,8 +2,8 @@ const { dev, testServer } = require("../../../config.json");
 const getLocalCommands = require("../../utils/getLocalCommands");
 
 module.exports = async (client, interaction) => {
-  if (!interaction.isChatInputCommand()) return;
-
+  if (!interaction.isChatInputCommand()) return;  
+  
   const localCommands = getLocalCommands();
 
   try {
@@ -24,7 +24,7 @@ module.exports = async (client, interaction) => {
     }
 
     if (commandObject.testOnly) {
-      if (!(interaction.guild.id === testServer)) {
+      if (interaction.guild.id !== testServer) {
         interaction.reply({
           content: "This command cannot be ran here.",
           ephemeral: true,
