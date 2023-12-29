@@ -50,19 +50,38 @@ module.exports = {
         return b.level - a.level;
       }
     });
+
     let currentRank =
       allLevels.findIndex((lvl) => lvl.userId === targetUserId) + 1;
     const rank = new canvacord.Rank()
       .setAvatar(targetUserObj.user.displayAvatarURL({ size: 256 }))
-      .setRank(currentRank)
+      .setRank(currentRank, "RANK")
       .setLevel(fetchedLevel.level)
       .setCurrentXP(fetchedLevel.xp)
       .setRequiredXP(calculateLevelXp(fetchedLevel.level))
       .setStatus(targetUserObj.presence.status)
-      .setProgressBar(["#000000", "#7289da"], "GRADIENT")
+      .setProgressBar(["#000000", "#43B581"], "GRADIENT")
       .setUsername(targetUserObj.user.username)
-      .setBackground("COLOR", "#1e2124")
-      .setDiscriminator(targetUserObj.user.discriminator);
+      // .setBackground("COLOR", "#1e2124")
+      .setBackground(
+        "IMAGE",
+        "https://cdn.discordapp.com/attachments/1189407208564346900/1190264098080968775/cover-rank.png?ex=65a12ad3&is=658eb5d3&hm=f7d9e746ab41bc6e17ef09be1868f17460d3e6cf91c965d91f714fa7d148131e&"
+      )
+      .setOverlay("#1e2124", 0, 0)
+      .setLevelColor("#43B581", "#747F8E")
+      .setRankColor("#43B581", "#747F8E");
+    // .setDiscriminator(targetUserObj.user.discriminator);
+    console.log(`target: ${JSON.stringify(targetUserObj.user, " ", 0)}`);
+    /* Color
+    #00ff00
+    #7289da
+    #43B581
+    #FAA61A
+    #F04747
+    #747F8E
+    #1e2124
+    #593595
+    */
 
     const data = await rank.build();
     const attachment = new AttachmentBuilder(data);
