@@ -21,9 +21,10 @@ const { ROLES } = require("../../helper/constance");
 module.exports = async (client, message, interaction) => {
   if (!message.inGuild() || message.author.bot) return;
 
+  // Check list member in channel list_member_channel_id
   if (message.content.toLowerCase() === "-list") {
     try {
-      const list = client.channels.cache.get("1190037320632647780").members;
+      const list = client.channels.cache.get("1190468774369972284").members;
       console.log(list);
     } catch (error) {
       console.log(error);
