@@ -10,7 +10,7 @@ module.exports = {
     const reply = await interaction.fetchReply();
     const ping = reply.createdTimestamp - interaction.createdTimestamp;
     interaction.editReply(
-      `Ping Latency: Client ${ping} ms | Websocket API Latency: ${client.ws.ping} ms`
+      `🌐  Ping Latency: Client ${ping} ms | Websocket API Latency: ${client.ws.ping} ms`
     );
   },
 };
