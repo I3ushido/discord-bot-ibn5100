@@ -20,18 +20,21 @@ const { ROLES } = require("../../helper/constance");
  */
 module.exports = async (client, message, interaction) => {
   if (!message.inGuild() || message.author.bot) return;
+  if (message.content.toLowerCase() === "-hi") {
+    message.reply("Hello");
+  }
 
   // Check list member in channel list_member_channel_id
   if (message.content.toLowerCase() === "-list") {
     try {
-      const list = client.channels.cache.get("1190468774369972284").members;
+      const list = client.channels.cache.get("378926276456611842").members;
       console.log(list);
     } catch (error) {
       console.log(error);
     }
   }
 
-  if (message.content.toLowerCase() === "-chipi") {
+  if (message.content.toLowerCase() === "-cat") {
     message.reply("https://media1.tenor.com/m/Yfem5pfa7wIAAAAC/cat-car.gif");
   }
 

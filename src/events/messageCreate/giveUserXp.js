@@ -42,7 +42,6 @@ module.exports = async (client, message) => {
       }
       await level.save().catch((err) => {
         console.log(`Error saving updated level ${err}`);
-        return;
       });
       cooldowns.add(message.author.id);
       setTimeout(() => {
