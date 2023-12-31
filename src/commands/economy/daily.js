@@ -4,8 +4,8 @@ const User = require("../../models/User");
 const dailyAmount = 100;
 
 module.exports = {
-  name: "daily",
-  description: "Collect your dailies!",
+  name: "credit",
+  description: "Collect your credit!",
   /**
    *
    * @param {Client} client
@@ -34,7 +34,7 @@ module.exports = {
 
         if (lastDailyDate === currentDate) {
           interaction.editReply(
-            "You have already collected your dailies today. Come back tomorrow!"
+            "You have already collected your credit today. Come back tomorrow!"
           );
           return;
         }
@@ -51,10 +51,10 @@ module.exports = {
       await user.save();
 
       interaction.editReply(
-        `${dailyAmount} was added to your balance. Your new balance is ${user.balance}`
+        `${dailyAmount}credit was added to your balance. Your new balance is ${user.balance}`
       );
     } catch (error) {
-      console.log(`Error with /daily: ${error}`);
+      console.log(`Error with /credit: ${error}`);
     }
   },
 };
