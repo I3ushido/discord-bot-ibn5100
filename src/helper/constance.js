@@ -8,7 +8,8 @@ const {
 
 module.exports = {
   ROLES: {
-    ADMIN: "1189546356457611274",
+    ADMIN: "405396099524984843",
+    ADMIN_DEV: "1189546356457611274",
   },
   STATUS: [
     {
